@@ -4,10 +4,10 @@ class Solution:
         parts = path.split("/")
         for part in parts:
             if part == "" or part == ".":
-                continue 
+                continue
             elif part == "..":
                 if stack:
                     stack.pop()
             else:
                 stack.append(part)
-        return "/" + "/".join(stack )
+        return "/" + "/".join(stack)
