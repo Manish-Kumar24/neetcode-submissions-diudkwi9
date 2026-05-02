@@ -7,7 +7,7 @@ class Solution:
         cases = [0] * k
         def backtrack(idx):
             if idx == len(nums):
-                return all(case == target for case in cases)
+                return True
             for i in range(k):
                 if cases[i] + nums[idx] <= target:
                     cases[i] += nums[idx]
