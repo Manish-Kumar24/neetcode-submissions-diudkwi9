@@ -1,13 +1,27 @@
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         m, n = len(matrix), len(matrix[0])
-        rows, cols = set(), set()
+        firstRow, firstCol = False, False
+        # first row
+        for j in range(n):
+            if matrix[0][j] == 0:
+                firstRow = True
+        # first col
         for i in range(m):
-            for j in range(n):
+            if matrix[i][0] == 0:
+                firstCol = True
+        for i in range(1, m):
+            for j in range(1, n):
                 if matrix[i][j] == 0:
-                    rows.add(i)
-                    cols.add(j)
-        for i in range(m):
-            for j in range(n):
-                if i in rows or j in cols:
+                    matrix[0][j] = 0
+                    matrix[i][0] = 0
+        for i in range(1, m):
+            for j in range(1, n):
+                if matrix[0][j] == 0 or matrix[i][0] == 0:
                     matrix[i][j] = 0
+        if firstRow:
+            for j in range(n):
+                matrix[0][j] = 0
+        if firstCol:
+            for i in range(m):
+                matrix[i][0] = 0
